@@ -1,0 +1,344 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<!-- ======= Intro Section ======= -->
+<div class="intro intro-carousel swiper position-relative">
+  <div class="swiper-wrapper">
+    
+    {% if sliders %}
+    {% for slider in sliders %}
+
+    <div class="swiper-slide carousel-item-a intro-item bg-image"
+      style="background-image: url({{slider.image1.url}}); width:100%; height: 600px;">
+      <div class="overlay overlay-a"></div>
+      <div class="intro-content display-table">
+        <div class="table-cell">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="intro-body">
+
+                  <h1 class="intro-title mb-4 ">
+                    <span class="color-b"> </span>AUTOMOBILE
+
+                  </h1>
+                  <p class="intro-subtitle intro-price">
+                    <a href="{% url 'automobiles' %}"><span class="price-a">Automobile</span></a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <div class="swiper-slide carousel-item-a intro-item bg-image"
+      style="background-image: url({{slider.image2.url}}) ; width:100%; height: 600px;">
+      <div class="overlay overlay-a"></div>
+      <div class="intro-content display-table">
+        <div class="table-cell">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="intro-body">
+
+                  <h1 class="intro-title mb-4">
+                    <span class="color-b"> </span> HOME APPLIANCES
+
+                  </h1>
+                  <p class="intro-subtitle intro-price">
+                    <a href="{% url 'appliances' %}"><span class="price-a">APPLIANCES</span></a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+
+  <div class="swiper-pagination"></div>
+
+  {% endfor %}
+  {% else%}
+  Nothing to show
+  {% endif %}
+
+
+
+</div><!-- End Intro Section -->
+
+<main id="main">
+
+  <!-- ======= Services Section ======= -->
+  <section class="section-services section-t8">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">Our services</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card-box-c foo">
+            <div class="card-header-c d-flex">
+            <div class="card-box-ico">
+              <span class="fa fa-car"></span>
+            </div>
+              <div class="card-title-c align-self-center">
+                <h5 class="title-c">Automobile </h5>
+              </div>
+            </div>
+            <div class="card-body-c">
+              <p class="content-c" >
+                We sell differnt type of cars at your taste either brand new or tokunbo.
+              </p>
+            </div>
+            <div class="card-footer-c">
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-box-c foo">
+            <div class="card-header-c d-flex">
+              <div class="card-box-ico">
+                <span class="fa fa-television"></span>
+              </div>
+              <div class="card-title-c align-self-center">
+                <h5 class="title-c">Home Aplliances</h5>
+              </div>
+            </div>
+            <div class="card-body-c">
+              <p class="content-c" >
+                We sell different type of home applinaces that might be of suite to you
+              </p>
+            </div>
+            <div class="card-footer-c">
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-box-c foo">
+            <div class="card-header-c d-flex">
+              <div class="card-box-ico">
+                <span class="fa fa-shirtsinbulk"></span>
+              </div>
+              <div class="card-title-c align-self-center">
+                <h5 class="title-c">Customize shirt</h5>
+              </div>
+            </div>
+            <div class="card-body-c">
+              <p class="content-c" >
+                We customize your outfit such as polo,round neck and etc
+              </p>
+            </div>
+            <div class="card-footer-c">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Services Section -->
+
+  <!-- ======= Latest Properties Section ======= -->
+  <section class="section-property section-t8">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">Latest Automobile</h2>
+            </div>
+            <div class="title-link">
+              <a href="{% url 'automobiles' %}">Click here
+                <span class="bi bi-chevron-right"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="property-carousel" class="swiper">
+        <div class="swiper-wrapper">
+          {% if automobiles %}
+          {% for automobile in automobiles %}
+          <div class="carousel-item-b swiper-slide">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="{{ automobile.image.url}}" style="width: 400px ; height: 400px;" alt=""
+                  class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="property-single.html"> {{ automobile.carName}}
+                      </a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">Sale | # {{ automobile.price}}</span>
+                    </div>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+
+                      <li>
+                        <h4 class="card-info-title">Location</h4>
+                        <span>{{ automobile.location}}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Colour</h4>
+                        <span>{{ automobile.color}}</span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">brand year</h4>
+                        <span>{{ automobile.brandYear}} </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End carousel item -->
+          {% endfor %}
+          {% else%}
+          Nothing to show
+          {% endif %}
+      <div class="propery-carousel-pagination carousel-pagination"></div>
+
+    </div>
+  </section><!-- End Latest Properties Section -->
+
+
+  <!-- ======= Home appliances ======= -->
+  <section class="section-news section-t8">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">Home appliances</h2>
+            </div>
+            <div class="title-link">
+              <a href="{% url 'appliances' %}">Click here
+                <span class="bi bi-chevron-right"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="news-carousel" class="swiper">
+        <div class="swiper-wrapper">
+          {% if appliances %}
+          {% for appliance in appliances %}
+          <div class="carousel-item-c swiper-slide">
+            <div class="card-box-b card-shadow news-box">
+              <div class="img-box-b">
+                <img src="{{appliance.image.url}}" style="width: 400px ; height: 400px;" alt="" class="img-b img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-header-b">
+                  <div class="card-category-b">
+                    <a href="#" class="category-b">{{appliance.itemName}}</a>
+                  </div>
+                  <div class="card-title-b">
+                    <h2 class="title-2">
+                      <a href="">{{appliance.maker}}
+                      </a>
+                    </h2>
+                  </div>
+                  <div class="card-date">
+                    <span class="date-b">#{{appliance.price}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End carousel item -->
+
+          {% endfor %}
+          {% else%}
+          Nothing to show
+          {% endif %}
+
+        </div>
+      </div>
+
+      <div class="news-carousel-pagination carousel-pagination"></div>
+    </div>
+  </section><!-- End Latest News Section -->
+
+
+  <section class="section-testimonials section-t8 nav-arrow-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h5 class="title-a">We can stock your kitchen for you</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="testimonial-carousel" class="swiper">
+        <div class="swiper-wrapper">
+          {% if stokes %}
+          {% for stoke in stokes %}
+          <div class="carousel-item-a swiper-slide">
+            <div class="testimonials-box">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="testimonial-img">
+                    <img src="{{stoke.image.url}}" style="width: 500px ; height: 400px;" alt=""
+                      class="img-fluid">
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="testimonial-ico">
+                    <i class="bi bi-chat-quote-fill"></i>
+                  </div>
+                  <div class="testimonials-content">
+                    <p class="testimonial-text">
+                      {{stoke.message}}
+                    </p>
+                  </div>
+                  <div class="testimonial-author-box">
+                    <img src="{{stoke.photo.url}}" style="width: 500px ; height: 100px;" alt=""
+                      class="testimonial-avatar">
+                    <h5 class="testimonial-author">Customer</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End carousel item -->
+          {% endfor %}
+          {% else%}
+          Nothing to show
+          {% endif %}
+
+        </div>
+      </div>
+      <div class="testimonial-carousel-pagination carousel-pagination"></div>
+
+    </div>
+  </section><!-- End Testimonials Section -->
+
+</main><!-- End #main -->
+
+{% endblock %}
